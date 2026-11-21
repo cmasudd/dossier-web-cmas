@@ -1,23 +1,11 @@
 const pages = 'https://cmasudd.github.io/';
 const github = 'https://github.com/cmasudd/';
-const projects = [
-  ['Aire Aysén', 'aireAysen', 'Calidad del aire', 'Portal de material particulado en Coyhaique, Región de Aysén.'],
-  ['El Aire que Respiramos', 'aireaconcagua', 'Calidad del aire', 'Información sobre el aire en el Valle de Aconcagua.'],
-  ['Estación HiriPro', 'HIRI232', 'Calidad del aire', 'Visualización de mediciones de material particulado de la estación HiriPro.'],
-  ['AUCA Cochrane', 'auca-cochrane', 'Monitoreo ambiental', 'Plataforma de monitoreo ambiental y datos horarios de sensores en Cochrane.'],
-  ['Calidad y nivel de agua', 'calidadAgua', 'Agua', 'Visualización y descarga de mediciones de sensores de calidad y nivel de agua.'],
-  ['Voluntarios por el Agua', 'voluntariosxagua', 'Agua', 'Iniciativa Voluntarios por el Agua en el Cajón del Maipo.'],
-  ['Agua y minerales críticos', 'giz', 'Agua', 'Presentación sobre agua, minerales críticos y seguridad de suministro para GIZ 2026.'],
-  ['Analizador de sección de cables', 'analizadorDeseccionCables', 'Herramientas', 'Herramienta web para analizar la sección de cables. Repositorio derivado de otro proyecto.'],
-];
 const query = document.getElementById('query');
 const category = document.getElementById('category');
 const results = document.getElementById('projects');
 const count = document.getElementById('count');
 const normalize = value => value.normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase();
-for (const theme of [...new Set(projects.map(project => project[2]))].sort()) {
-  category.add(new Option(theme, theme));
-}
+
 
 function element(tag, content, className) {
   const node = document.createElement(tag);
@@ -33,11 +21,11 @@ function link(label, url, title, className) {
   return node;
 }
 
-function render() {
+function render(projects) {
   const terms = normalize(query.value.trim()).split(/\s+/);
   const visible = projects.filter(project =>
-    (!category.value || project[2] === category.value) &&
-    terms.every(term => normalize(project.join(' ')).includes(term))
+    (!category.value || project.theme === category.value) &&
+    terms.every(term => normalize([project.title, project.repo, project.theme, project.description].join(' ')).includes(term))
   );
   count.textContent = visible.length === 1 ? '1 proyecto' : visible.length + ' proyectos';
   results.replaceChildren();
@@ -45,17 +33,47 @@ function render() {
     results.append(element('p', 'No hay proyectos que coincidan con tu búsqueda.'));
     return;
   }
-  for (const [title, repo, theme, description] of visible) {
+  for (const { title, repo, theme, description, preview: thumbnail, url } of visible) {
     const article = element('article', '', 'card');
+    const website = url || pages + repo + '/';
+    if (thumbnail) {
+      const preview = link('Abrir vista del sitio', website, title, 'preview');
+      preview.textContent = '';
+      const image = element('img', '');
+      image.src = thumbnail;
+      image.alt = '';
+      image.width = 720;
+      image.height = 480;
+      image.loading = 'lazy';
+      image.addEventListener('error', () => preview.remove());
+      preview.append(image);
+      article.append(preview);
+    }
+    const details = element('div', '', 'card-details');
     const actions = element('div', '', 'actions');
     actions.append(
-      link('Visitar sitio', pages + repo + '/', title, 'visit'),
+      link('Visitar sitio', website, title, 'visit'),
       link('Ver repositorio', github + repo, title)
     );
-    article.append(element('p', theme, 'theme'), element('h3', title), element('p', description), actions);
+    details.append(element('p', theme, 'theme'), element('h3', title), element('p', description), actions);
+    article.append(details);
     results.append(article);
   }
 }
-query.addEventListener('input', render);
-category.addEventListener('change', render);
-render();
+async function loadCatalog() {
+  try {
+    const response = await fetch('proyectos.json');
+    if (!response.ok) throw new Error('No se pudo leer el catálogo');
+    const projects = await response.json();
+    for (const theme of [...new Set(projects.map(project => project.theme))].sort()) {
+      category.add(new Option(theme, theme));
+    }
+    query.addEventListener('input', () => render(projects));
+    category.addEventListener('change', () => render(projects));
+    render(projects);
+  } catch {
+    count.textContent = 'El catálogo no está disponible en este momento.';
+  }
+}
+
+loadCatalog();

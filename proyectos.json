@@ -1,0 +1,58 @@
+[
+  {
+    "title": "Aire Aysén",
+    "repo": "aireAysen",
+    "theme": "Calidad del aire",
+    "description": "Portal de material particulado en Coyhaique, Región de Aysén.",
+    "preview": "assets/previews/aireAysen.webp"
+  },
+  {
+    "title": "El Aire que Respiramos",
+    "repo": "aireaconcagua",
+    "theme": "Calidad del aire",
+    "description": "Información sobre el aire en el Valle de Aconcagua.",
+    "preview": "assets/previews/aireaconcagua.webp"
+  },
+  {
+    "title": "Estación HiriPro",
+    "repo": "HIRI232",
+    "theme": "Calidad del aire",
+    "description": "Visualización de mediciones de material particulado de la estación HiriPro.",
+    "preview": "assets/previews/HIRI232.webp"
+  },
+  {
+    "title": "AUCA Cochrane",
+    "repo": "auca-cochrane",
+    "theme": "Monitoreo ambiental",
+    "description": "Plataforma de monitoreo ambiental y datos horarios de sensores en Cochrane.",
+    "preview": "assets/previews/auca-cochrane.webp"
+  },
+  {
+    "title": "Calidad y nivel de agua",
+    "repo": "calidadAgua",
+    "theme": "Agua",
+    "description": "Visualización y descarga de mediciones de sensores de calidad y nivel de agua.",
+    "preview": "assets/previews/calidadAgua.webp"
+  },
+  {
+    "title": "Voluntarios por el Agua",
+    "repo": "voluntariosxagua",
+    "theme": "Agua",
+    "description": "Iniciativa Voluntarios por el Agua en el Cajón del Maipo.",
+    "preview": "assets/previews/voluntariosxagua.webp"
+  },
+  {
+    "title": "Agua y minerales críticos",
+    "repo": "giz",
+    "theme": "Agua",
+    "description": "Presentación sobre agua, minerales críticos y seguridad de suministro para GIZ 2026.",
+    "preview": "assets/previews/giz.webp"
+  },
+  {
+    "title": "Analizador de sección de cables",
+    "repo": "analizadorDeseccionCables",
+    "theme": "Herramientas",
+    "description": "Herramienta web para analizar la sección de cables. Repositorio derivado de otro proyecto.",
+    "preview": "assets/previews/analizadorDeseccionCables.webp"
+  }
+]
