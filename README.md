@@ -15,7 +15,7 @@ Busca por nombre, repositorio o tema y combina la búsqueda con el filtro de tem
 
 ## Diseño e identidad institucional
 
-La cabecera presenta el logo compuesto de la UDD y el Centro C+ sobre blanco. La portada y los enlaces usan azul `#0065A3`, azul oscuro `#27273F` y acentos verdes `#55E8A0`. El pie incluye la marca UDD y el contacto **Webmaster Alejandro Rebolledo**. [Logo compuesto original](https://cmas.udd.cl/wp-content/uploads/2023/05/Logo-compuesto-UDD-Cmas.png) · [Referencia visual del Centro C+](https://cmas.udd.cl/preview/) · [arebolledo@udd.cl](mailto:arebolledo@udd.cl)
+La cabecera azul presenta el logo compuesto de la UDD y el Centro C+ sobre una base blanca, con una línea verde en el borde inferior. La portada y los enlaces usan azul `#0065A3`, azul oscuro `#27273F` y acentos verdes `#55E8A0`. El pie incluye la marca UDD y el contacto **Webmaster Alejandro Rebolledo**. [Logo compuesto original](https://cmas.udd.cl/wp-content/uploads/2023/05/Logo-compuesto-UDD-Cmas.png) · [Referencia visual del Centro C+](https://cmas.udd.cl/preview/) · [arebolledo@udd.cl](mailto:arebolledo@udd.cl)
 
 | Para cambiar | Archivo |
 | --- | --- |

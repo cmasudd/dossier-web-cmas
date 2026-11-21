@@ -22,8 +22,18 @@ a { color: inherit; text-underline-offset: .22em; }
   gap: 1rem 2rem;
   padding: 1.3rem var(--gutter);
 }
-.mast { background: white; color: var(--blue); }
-.brand { width: min(100%, 530px); }
+.mast {
+  background: var(--blue);
+  color: white;
+  border-bottom: 3px solid var(--green);
+}
+.brand {
+  display: block;
+  width: min(100%, 530px);
+  padding: .65rem 1rem;
+  background: white;
+  border-radius: .4rem;
+}
 .brand img, .university img { display: block; max-width: 100%; height: auto; }
 .mast > a:last-child { font-weight: 700; }
 
